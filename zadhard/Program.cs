@@ -18,21 +18,6 @@ void PrintArray(int[] array)
     Console.WriteLine();
 }
 
-void MaxMin(int[]array)
-{
-    int max = array[0];
-    int min = array[0];
-
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (array[i] > max) max = array[i];
-
-        else if (array[i] < min) min = array[i];
-    }
-    int indexmax = Array.IndexOf(array, max);
-    int indexmin = Array.IndexOf(array, min);  
-    System.Console.WriteLine($"Максимальное число {max} под индексом {indexmax},Минимальное чило {min} под индексом {indexmin}");
-}
 
 int Average(int[] array)
 {
@@ -45,6 +30,34 @@ int Average(int[] array)
     }
     int av = sum / array.Length;
     return av;
+}
+
+void Data(int[] array)
+{
+    int average = Average(array);
+    int max = array[0];
+    int min = array[0];
+
+
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] > max) max = array[i];
+
+        else if (array[i] < min) min = array[i];
+    }
+    int indexmax = Array.IndexOf(array, max);
+    int indexmin = Array.IndexOf(array, min);
+    int[] newArray = new int[5];
+        newArray[0] = max;
+        newArray[1] = indexmax;
+        newArray[2] = min;
+        newArray[3] = indexmin;
+        newArray[4] = average;
+
+    PrintArray(newArray);
+    
+    Console.WriteLine($"Максимальное число {max} под индексом {indexmax},Минимальное чило {min} под индексом {indexmin}. Среднее арифметическое {average}");
+    
 }
 
 int[] Sort(int[] array)
@@ -71,17 +84,14 @@ void Median(int[] array)
     int median = 0;
     if (array.Length % 2 == 0) median = (array[array.Length / 2] + array[array.Length / 2 - 1]) / 2;
     else median = array[array.Length / 2];
-   System.Console.WriteLine($"Медианное значение равно {median}");
+    System.Console.WriteLine($"Медианное значение равно {median}");
 }
-
 
 
 
 int[] array = CreateArray(10);
 PrintArray(array);
-MaxMin(array);
-int average =Average(array); 
-System.Console.WriteLine($"Среднее арифметическое {average}");
-int [] newArray2 = Sort(array);
+Data(array);
+int[] newArray2 = Sort(array);
 PrintArray(newArray2);
 Median(newArray2);
